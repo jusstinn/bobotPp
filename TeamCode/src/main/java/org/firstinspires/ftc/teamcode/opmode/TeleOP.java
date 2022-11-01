@@ -5,6 +5,7 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.subsytems.Glider;
 import org.firstinspires.ftc.teamcode.subsytems.Robot;
 import org.firstinspires.ftc.teamcode.util.StickyGamepad;
 
@@ -52,7 +53,6 @@ public class TeleOP extends OpMode {
     public void loop(){
         if (!robot.drive.isBusy()) {
             switch (driveMode) {
-                // TODO: tune this to liking
                 case FAST:
                     robot.drive.setMotorPowersFromGamepad(gamepad1, 0.7);
                     break;
@@ -71,6 +71,14 @@ public class TeleOP extends OpMode {
                     break;
             }
         }
-
+        if(gamepad1.right_trigger > 0){
+            robot.glider.sliderState = Glider.SliderState.EXTEND;
+        }
+        else if(gamepad1.left_trigger > 0){
+            robot.glider.sliderState = Glider.SliderState.RETRACT;
+        }
+        else{
+            robot.glider.sliderState = Glider.SliderState.IDLE;
+        }
     }
 }
