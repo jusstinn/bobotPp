@@ -39,6 +39,7 @@ public class Robot implements OpModeManagerNotifier.Notifications {
 
     public DriveTrain drive;
     public Glider glider;
+    public Outtake outtake;
 
     public Robot(OpMode opmode, boolean isAutonomous) {
         dashboard = FtcDashboard.getInstance();
@@ -57,7 +58,12 @@ public class Robot implements OpModeManagerNotifier.Notifications {
         }catch(Exception e){
             Log.w(TAG, "skipping Glider");
         }
-
+        try{
+            outtake = new Outtake(opmode.hardwareMap, this);
+            subsystems.add(outtake);
+        }catch(Exception e){
+            Log.w(TAG, "skipping Outtake");
+        }
         subsystemUpdateExecutor = ThreadPool.newSingleThreadExecutor("subsystem update");
     }
 

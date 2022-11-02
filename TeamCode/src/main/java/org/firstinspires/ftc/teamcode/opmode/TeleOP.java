@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.subsytems.Glider;
+import org.firstinspires.ftc.teamcode.subsytems.Outtake;
 import org.firstinspires.ftc.teamcode.subsytems.Robot;
 import org.firstinspires.ftc.teamcode.util.StickyGamepad;
 
@@ -71,14 +72,20 @@ public class TeleOP extends OpMode {
                     break;
             }
         }
-        if(gamepad1.right_trigger > 0){
+        if(gamepad2.right_trigger > 0){
             robot.glider.sliderState = Glider.SliderState.EXTEND;
         }
-        else if(gamepad1.left_trigger > 0){
+        else if(gamepad2.left_trigger > 0){
             robot.glider.sliderState = Glider.SliderState.RETRACT;
         }
         else{
             robot.glider.sliderState = Glider.SliderState.IDLE;
+        }
+        if(gamepad2.a){
+            robot.outtake.clawState = Outtake.ClawState.CLOSED;
+        }
+        else if (gamepad2.b){
+            robot.outtake.clawState = Outtake.ClawState.OPEN;
         }
     }
 }
