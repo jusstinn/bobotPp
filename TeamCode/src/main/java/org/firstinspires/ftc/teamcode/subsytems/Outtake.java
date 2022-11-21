@@ -6,8 +6,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @Config
 public class Outtake implements Sub{
-    public static double CLOSED_POSITION = 0.82;
-    public static double OPEN_POSITION = 1;
+    public static double CLOSED_POSITION_RIGHT = 0.04;
+    public static double OPEN_POSITION_RIGHT = 0.25;
+    public static double CLOSED_POSITION_LEFT = 0.15;
+    public static double OPEN_POSITION_LEFT = 0;
 
     public enum  ClawState {
         OPEN,
@@ -16,22 +18,26 @@ public class Outtake implements Sub{
 
     public ClawState clawState;
 
-    public Servo clawServo;
+    public Servo clawServo1;
+    public Servo clawServo2;
 
     public Outtake(HardwareMap hardwareMap, Robot robot){
-        clawServo = hardwareMap.get(Servo.class, "clawServo");
+        clawServo1 = hardwareMap.get(Servo.class, "clawServo1");
+        clawServo2 = hardwareMap.get(Servo.class, "clawServo2");
 
-        clawState = ClawState.CLOSED;
+        clawState = ClawState.OPEN;
     }
 
     @Override
     public void update() {
         switch (clawState) {
             case CLOSED:
-                clawServo.setPosition(CLOSED_POSITION);
+                clawServo2.setPosition(OPEN_POSITION_LEFT);
+                clawServo1.setPosition(OPEN_POSITION_RIGHT);
                 break;
             case OPEN:
-                clawServo.setPosition(OPEN_POSITION);
+                clawServo2.setPosition(CLOSED_POSITION_LEFT);
+                clawServo1.setPosition(CLOSED_POSITION_RIGHT);
                 break;
         }
     }

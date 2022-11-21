@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.subsytems;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 @Config
 public class Glider implements Sub{
@@ -25,6 +26,8 @@ public class Glider implements Sub{
         slide = hardwareMap.get(DcMotor.class, "slideMotor");
 
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        slide.setDirection(DcMotorSimple.Direction.REVERSE);
 
         sliderState = SliderState.IDLE;
     }

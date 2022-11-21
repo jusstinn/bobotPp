@@ -4,6 +4,7 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.subsytems.Glider;
 import org.firstinspires.ftc.teamcode.subsytems.Outtake;
@@ -51,7 +52,7 @@ public class TeleOP extends OpMode {
     }
 
     @Override
-    public void loop(){
+    public void loop() {
         if (!robot.drive.isBusy()) {
             switch (driveMode) {
                 case FAST:
