@@ -1,4 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmode;
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
+
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
@@ -73,14 +75,31 @@ public class TeleOP extends OpMode {
                     break;
             }
         }
-        if(gamepad2.right_trigger > 0){
-            robot.glider.sliderState = Glider.SliderState.EXTEND;
-        }
-        else if(gamepad2.left_trigger > 0){
-            robot.glider.sliderState = Glider.SliderState.RETRACT;
-        }
-        else{
+
+        telemetry.addData("shess", robot.glider.slide.getCurrentPosition());
+        telemetry.addData("shess222", robot.glider.sliderState);
+        if(gamepad1.a){
+            robot.glider.triggerOn = false;
+            robot.glider.sliderState = Glider.SliderState.HIGH;
+        } else if(gamepad1.b){
+            robot.glider.triggerOn = false;
+            robot.glider.sliderState = Glider.SliderState.MIDDLE;
+        } else if(gamepad1.x){
+            robot.glider.triggerOn = false;
+            robot.glider.sliderState = Glider.SliderState.LOW;
+        } else if (gamepad1.y){
+            robot.glider.triggerOn = false;
             robot.glider.sliderState = Glider.SliderState.IDLE;
+        }
+
+        if(gamepad1.right_trigger > 0){
+            robot.glider.slide.setPower(robot.glider.EXTEND_POWER_FAST);
+            robot.glider.triggerOn = true;
+        } else if(gamepad1.left_trigger > 0){
+            robot.glider.slide.setPower(robot.glider.RETRACT_POWER_FAST);
+            robot.glider.triggerOn = true;
+        } else if (robot.glider.triggerOn) {
+            robot.glider.slide.setPower(robot.glider.IDLE_POWER);
         }
         if(gamepad2.a){
             robot.outtake.clawState = Outtake.ClawState.CLOSED;
