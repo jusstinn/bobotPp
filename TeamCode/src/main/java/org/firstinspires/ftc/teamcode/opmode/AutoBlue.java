@@ -173,7 +173,7 @@ public class AutoBlue extends LinearOpMode {
         robot.outtake.clawState = Outtake.ClawState.CLOSED;
         robot.sleep(1);
 
-        robot.glider.sliderState = Glider.SliderState.EXTEND;
+        //robot.glider.sliderState = Glider.SliderState.EXTEND;
         robot.sleep(0.1);
         robot.glider.sliderState = Glider.SliderState.IDLE;
 
@@ -185,7 +185,7 @@ public class AutoBlue extends LinearOpMode {
         // dropat con
         // TODO: ?????mers in spate?????
 
-        robot.glider.sliderState = Glider.SliderState.EXTEND;
+        //robot.glider.sliderState = Glider.SliderState.EXTEND;
         robot.sleep(0.8);
         robot.glider.sliderState = Glider.SliderState.IDLE;
         // mere in fata la lasat de preload + rotit
@@ -197,7 +197,7 @@ public class AutoBlue extends LinearOpMode {
         robot.drive.followTrajectory(trajectories.get(2));
         robot.drive.followTrajectory(trajectories.get(3));
 
-        robot.glider.sliderState = Glider.SliderState.RETRACT;
+        //robot.glider.sliderState = Glider.SliderState.RETRACT;
         robot.sleep(0.7);
         robot.glider.sliderState = Glider.SliderState.IDLE;
 
@@ -211,7 +211,7 @@ public class AutoBlue extends LinearOpMode {
         // a prins conul primului cycle
 
 
-        robot.glider.sliderState = Glider.SliderState.EXTEND;
+        //robot.glider.sliderState = Glider.SliderState.EXTEND;
         robot.sleep(0.8);
         robot.glider.sliderState = Glider.SliderState.IDLE;
 
@@ -221,7 +221,7 @@ public class AutoBlue extends LinearOpMode {
         robot.sleep(1);
 
 
-        robot.glider.sliderState = Glider.SliderState.RETRACT;
+        //robot.glider.sliderState = Glider.SliderState.RETRACT;
         robot.sleep(0.75);
         robot.glider.sliderState = Glider.SliderState.IDLE;
 
