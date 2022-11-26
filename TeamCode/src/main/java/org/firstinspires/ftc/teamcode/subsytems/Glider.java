@@ -33,9 +33,9 @@ public class Glider implements Sub{
         STACKED_CONES // the height needed to get stacked cones (autonomy shit)
     }
     double pozIDLE = 0; // TODO
-    double pozLOW = 1400; // TODO
-    double pozMIDDLE = 2750; // TODO
-    double pozHIGH = 3700; // TODO
+    double pozLOW = 1700; // TODO
+    double pozMIDDLE = 2950; // TODO
+    double pozHIGH = 3900; // TODO
     int currIndexStackedCones = 0;
     public double[] stackConesList = new double[5];
 

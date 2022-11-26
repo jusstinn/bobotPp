@@ -76,26 +76,31 @@ public class TeleOP extends OpMode {
             }
         }
 
-        telemetry.addData("shess", robot.glider.slide.getCurrentPosition());
-        telemetry.addData("shess222", robot.glider.sliderState);
-        if(gamepad1.a){
-            robot.glider.triggerOn = false;
-            robot.glider.sliderState = Glider.SliderState.HIGH;
-        } else if(gamepad1.b){
-            robot.glider.triggerOn = false;
-            robot.glider.sliderState = Glider.SliderState.MIDDLE;
-        } else if(gamepad1.x){
-            robot.glider.triggerOn = false;
-            robot.glider.sliderState = Glider.SliderState.LOW;
-        } else if (gamepad1.y){
-            robot.glider.triggerOn = false;
-            robot.glider.sliderState = Glider.SliderState.IDLE;
+        //telemetry.addData("shess", robot.glider.slide.getCurrentPosition());
+        //telemetry.addData("shess222", robot.glider.sliderState);
+        if (gamepad2.y) {
+            if(gamepad2.dpad_right){
+                robot.glider.triggerOn = false;
+                robot.glider.sliderState = Glider.SliderState.HIGH;
+            }
+            if(gamepad2.dpad_up){
+                robot.glider.triggerOn = false;
+                robot.glider.sliderState = Glider.SliderState.MIDDLE;
+            }
+            if(gamepad2.dpad_left){
+                robot.glider.triggerOn = false;
+                robot.glider.sliderState = Glider.SliderState.LOW;
+            }
+            if (gamepad2.dpad_down){
+                robot.glider.triggerOn = false;
+                robot.glider.sliderState = Glider.SliderState.IDLE;
+            }
         }
 
-        if(gamepad1.right_trigger > 0){
+        if(gamepad2.right_trigger > 0){
             robot.glider.slide.setPower(robot.glider.EXTEND_POWER_FAST);
             robot.glider.triggerOn = true;
-        } else if(gamepad1.left_trigger > 0){
+        } else if(gamepad2.left_trigger > 0){
             robot.glider.slide.setPower(robot.glider.RETRACT_POWER_FAST);
             robot.glider.triggerOn = true;
         } else if (robot.glider.triggerOn) {
