@@ -179,9 +179,10 @@ public class AutoRed extends LinearOpMode {
         robot.outtake.clawState = Outtake.ClawState.CLOSED;
         robot.sleep(1);
 
-        //robot.glider.sliderState = Glider.SliderState.EXTEND;
-        robot.sleep(0.1);
-        robot.glider.sliderState = Glider.SliderState.IDLE;
+        robot.glider.triggerOn = true;
+        robot.glider.slide.setPower(Glider.EXTEND_POWER_NORMAL);
+        robot.sleep(0.4);
+        robot.glider.slide.setPower(Glider.IDLE_POWER);
 
 
 

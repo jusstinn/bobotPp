@@ -51,7 +51,7 @@ public class Glider implements Sub{
 
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        slide.setDirection(DcMotorSimple.Direction.REVERSE);
+        //slide.setDirection(DcMotorSimple.Direction.REVERSE);
 
         sliderState = SliderState.IDLE;
 

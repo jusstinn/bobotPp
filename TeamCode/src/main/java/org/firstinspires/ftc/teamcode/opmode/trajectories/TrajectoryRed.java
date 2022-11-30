@@ -44,7 +44,7 @@ public class TrajectoryRed{
         // 1
         // mere in fata la lasat de preload + rotit
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(64, -12.5, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(64, -18.5, Math.toRadians(180)))
                 .build()
         );
 
@@ -105,7 +105,7 @@ public class TrajectoryRed{
         // 1
         // mere in fata la lasat de preload + rotit
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(64, -12.5, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(64, -18.5, Math.toRadians(180)))
                 .build()
         );
 
@@ -165,7 +165,7 @@ public class TrajectoryRed{
         // 1
         // mere in fata la lasat de preload + rotit
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(64, -12.5, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(64, -18.5, Math.toRadians(180)))
                 .build()
         );
 

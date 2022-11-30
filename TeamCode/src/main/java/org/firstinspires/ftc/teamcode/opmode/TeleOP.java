@@ -76,8 +76,8 @@ public class TeleOP extends OpMode {
             }
         }
 
-        //telemetry.addData("shess", robot.glider.slide.getCurrentPosition());
-        //telemetry.addData("shess222", robot.glider.sliderState);
+        telemetry.addData("shess", robot.glider.slide.getCurrentPosition());
+        telemetry.addData("shess222", robot.glider.sliderState);
         if (gamepad2.y) {
             if(gamepad2.dpad_right){
                 robot.glider.triggerOn = false;
