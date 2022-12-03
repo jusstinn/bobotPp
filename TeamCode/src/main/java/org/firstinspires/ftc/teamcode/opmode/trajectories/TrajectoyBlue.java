@@ -36,6 +36,10 @@ public class TrajectoyBlue {
         return new TrajectoryBuilder(getTrajectorySequenceEndPos(trajectories), startHeading, BASE_VEL_CONSTRAINT, BASE_ACCEL_CONSTRAINT);
     }
 
+    private static TrajectoryBuilder makeTrajectoryBlana(List<Trajectory> trajectories, double startHeading) {
+        return new TrajectoryBuilder(getTrajectorySequenceEndPos(trajectories), startHeading, BLANA_VEL_CONSTRAINT, BLANA_ACCEL_CONSTRAINT);
+    }
+
     public static List<Trajectory> getTrajectories(int value) {
         List<Trajectory> trajectories = new ArrayList<>();
 
@@ -49,7 +53,7 @@ public class TrajectoyBlue {
         // 1
         // mere in fata la lasat de preload + rotit
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(-62, -14.5, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(-63, -16.5, Math.toRadians(0)))
                 .build()
         );
 
@@ -84,7 +88,7 @@ public class TrajectoyBlue {
         // 6
         // MERS FATA SA NU DEA PESTE CONU DE JOS
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(0))
-                .lineToLinearHeading(new Pose2d(-61, -16.5, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(-62, -16.5, Math.toRadians(0)))
                 .build()
         );
 
@@ -96,23 +100,46 @@ public class TrajectoyBlue {
                 .build()
         );
 
-        //8
+        // DE AICI E NOU
+        // TODO
+
+        // 8
+        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(0))
+                .lineToLinearHeading(new Pose2d(-53, -3, Math.toRadians(180)))
+                .build()
+        );
+
+        // 9
+        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
+                .lineToLinearHeading(new Pose2d(-67.5, -3, Math.toRadians(180)))
+                .build()
+        );
+
+        // 10
+        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
+                .lineToLinearHeading(new Pose2d(-22.5, 5.5, Math.toRadians(90)))
+                .build()
+        );
+
+
+
+        //11
         if (value == 1 || value == -1) {
-            // Right
-            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(0))
-                    .lineToLinearHeading(new Pose2d(-15, -3, Math.toRadians(0)))
+            // Middle
+            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
+                    .lineToLinearHeading(new Pose2d(-74, -3, Math.toRadians(0)))
                     .build()
             );
         } else if (value == 2) {
             //Left
-            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(0))
-                    .lineToLinearHeading(new Pose2d(-46, -3, Math.toRadians(0)))
+            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
+                    .lineToLinearHeading(new Pose2d(-43, -3, Math.toRadians(0)))
                     .build()
             );
         } else if (value == 3) {
-            // Middle
-            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(0))
-                    .lineToLinearHeading(new Pose2d(-64, -3, Math.toRadians(0)))
+            // Right
+            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
+                    .lineToLinearHeading(new Pose2d(-16, -3, Math.toRadians(0)))
                     .build()
             );
         }

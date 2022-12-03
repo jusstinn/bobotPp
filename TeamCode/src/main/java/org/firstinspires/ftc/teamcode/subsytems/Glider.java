@@ -30,13 +30,15 @@ public class Glider implements Sub{
         LOW, // low stick
         MIDDLE, // middle height stick
         HIGH, // big height stick
-        STACKED_CONES // the height needed to get stacked cones (autonomy shit)
+        STACKED_CONES, // the height needed to get stacked cones (autonomy shit)
+        STACKED_CONES2 // the height needed to get stacked cones (autonomy shit)
     }
     double pozIDLE = 0; // TODO
     double pozLOW = 1700; // TODO
     double pozMIDDLE = 2950; // TODO
     double pozHIGH = 3900; // TODO
     double pozSTACKED = 475;
+    double pozSTACKED2 = 400;
 
     public boolean triggerOn = false;
 
@@ -70,6 +72,8 @@ public class Glider implements Sub{
                 return pozHIGH;
             case STACKED_CONES:
                 return pozSTACKED;
+            case STACKED_CONES2:
+                return pozSTACKED2;
         }
         return -1; // never happens
     }

@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.opmode.trajectories;
 
 import static org.firstinspires.ftc.teamcode.subsytems.DriveConstants.BASE_ACCEL_CONSTRAINT;
 import static org.firstinspires.ftc.teamcode.subsytems.DriveConstants.BASE_VEL_CONSTRAINT;
+import static org.firstinspires.ftc.teamcode.subsytems.DriveConstants.BLANA_ACCEL_CONSTRAINT;
+import static org.firstinspires.ftc.teamcode.subsytems.DriveConstants.BLANA_VEL_CONSTRAINT;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
@@ -29,6 +31,10 @@ public class TrajectoryRed{
 
     private static TrajectoryBuilder makeTrajectoryBuilder(List<Trajectory> trajectories, double startHeading) {
         return new TrajectoryBuilder(getTrajectorySequenceEndPos(trajectories), startHeading, BASE_VEL_CONSTRAINT, BASE_ACCEL_CONSTRAINT);
+    }
+
+    private static TrajectoryBuilder makeTrajectoryBlana(List<Trajectory> trajectories, double startHeading) {
+        return new TrajectoryBuilder(getTrajectorySequenceEndPos(trajectories), startHeading, BLANA_VEL_CONSTRAINT, BLANA_ACCEL_CONSTRAINT);
     }
 
     public static List<Trajectory> getTrajectories(int value) {

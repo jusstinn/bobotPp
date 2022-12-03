@@ -71,14 +71,16 @@ public class DriveConstants {
      * small and gradually increase them later after everything is working. All distance units are
      * inches.
      */
-    public static double MAX_VEL = 30;
-    public static double MAX_ACCEL = 30;
+    public static double MAX_VEL = 33;
+    public static double MAX_ACCEL = 33;
     public static double MAX_ANG_VEL = 11;
     public static double MAX_ANG_ACCEL = 0.85;
 
 
     public static final TrajectoryVelocityConstraint BASE_VEL_CONSTRAINT = new MinVelocityConstraint(Arrays.asList(new AngularVelocityConstraint(Math.toRadians(90)), new MecanumVelocityConstraint(MAX_VEL, TRACK_WIDTH)));
     public static final TrajectoryAccelerationConstraint BASE_ACCEL_CONSTRAINT = new ProfileAccelerationConstraint(MAX_ACCEL);
+    public static final TrajectoryVelocityConstraint BLANA_VEL_CONSTRAINT = new MinVelocityConstraint(Arrays.asList(new AngularVelocityConstraint(Math.toRadians(90)), new MecanumVelocityConstraint(MAX_VEL * 2, TRACK_WIDTH)));
+    public static final TrajectoryAccelerationConstraint BLANA_ACCEL_CONSTRAINT = new ProfileAccelerationConstraint(MAX_ACCEL * 2);
 
 
     public static double encoderTicksToInches(double ticks) {
