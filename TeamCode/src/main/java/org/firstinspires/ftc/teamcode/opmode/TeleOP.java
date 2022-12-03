@@ -76,6 +76,7 @@ public class TeleOP extends OpMode {
             }
         }
 
+        telemetry.addData("mata", robot.outtake.clawServo.getPosition());
         telemetry.addData("shess", robot.glider.slide.getCurrentPosition());
         telemetry.addData("shess222", robot.glider.sliderState);
         if (gamepad2.y) {
@@ -108,8 +109,12 @@ public class TeleOP extends OpMode {
         }
         if(gamepad2.a){
             robot.outtake.clawState = Outtake.ClawState.CLOSED;
+        } else if (gamepad2.b){
+            robot.outtake.clawState = Outtake.ClawState.OPEN;
         }
-        else if (gamepad2.b){
+        if(gamepad1.a){
+            robot.outtake.clawState = Outtake.ClawState.CLOSED;
+        } else if (gamepad1.b){
             robot.outtake.clawState = Outtake.ClawState.OPEN;
         }
     }

@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.opmode.trajectories.TrajectoryRed;
 import org.firstinspires.ftc.teamcode.opmode.trajectories.TrajectoyBlue;
 import org.firstinspires.ftc.teamcode.subsytems.Glider;
 import org.firstinspires.ftc.teamcode.subsytems.Outtake;
@@ -147,89 +148,74 @@ public class AutoBlue extends LinearOpMode {
             sleep(20);
         }
 
+        if (isStopRequested()) {
+            robot.stop();
+            return;
+        }
+
+        // 1 middle
+        // 2 left
+        // 3 right
+        List<Trajectory> trajectories = TrajectoyBlue.getTrajectories(readFromCamera);
+        telemetry.addData("caemera vede", readFromCamera);
 
         robot.outtake.clawState = Outtake.ClawState.CLOSED;
         robot.sleep(0.4);
 
-        // initializat zero
-        List<Trajectory> trajectories = TrajectoyBlue.getTrajectoriesRight();
+        robot.glider.sliderState = Glider.SliderState.LOW;
 
-        telemetry.addData("caemera vede", readFromCamera);
-
-        // UND ERAU ASTEA COMMUITE
-
-        if (readFromCamera == 1) {
-            trajectories = TrajectoyBlue.getTrajectoriesMiddle();
-        }
-        if (readFromCamera == 2) {
-            trajectories = TrajectoyBlue.getTrajectoriesLeft();
-        }
-        if (readFromCamera == 3) {
-            trajectories = TrajectoyBlue.getTrajectoriesRight();
-        }
-
-
-
-        robot.outtake.clawState = Outtake.ClawState.CLOSED;
-        robot.sleep(1);
-
-        //robot.glider.sliderState = Glider.SliderState.EXTEND;
-        robot.sleep(0.1);
-        robot.glider.sliderState = Glider.SliderState.IDLE;
-
-
-
-        // se duce in colt + rotit
+        // se duce in colt
         robot.drive.followTrajectory(trajectories.get(0));
 
-        // dropat con
-        // TODO: ?????mers in spate?????
-
-        //robot.glider.sliderState = Glider.SliderState.EXTEND;
-        robot.sleep(0.8);
-        robot.glider.sliderState = Glider.SliderState.IDLE;
         // mere in fata la lasat de preload + rotit
         robot.drive.followTrajectory(trajectories.get(1));
 
+        robot.glider.triggerOn = true;
+        robot.glider.slide.setPower(robot.glider.RETRACT_POWER_SLOW);
+        robot.sleep(0.35);
+
+
         robot.outtake.clawState = Outtake.ClawState.OPEN;
         robot.sleep(1);
+        robot.glider.triggerOn = false;
+        robot.sleep(0.2);
 
+        // dat in spate
         robot.drive.followTrajectory(trajectories.get(2));
-        robot.drive.followTrajectory(trajectories.get(3));
+        robot.glider.sliderState = Glider.SliderState.STACKED_CONES;
 
-        //robot.glider.sliderState = Glider.SliderState.RETRACT;
-        robot.sleep(0.7);
-        robot.glider.sliderState = Glider.SliderState.IDLE;
+        // rotit la conuri
+        robot.drive.followTrajectory(trajectories.get(3));
+        robot.sleep(0.2);
 
         // shusta persshuta mers i nfata
         robot.drive.followTrajectory(trajectories.get(4));
 
         robot.outtake.clawState = Outtake.ClawState.CLOSED;
-        robot.sleep(1);
-
+        robot.sleep(0.75);
 
         // a prins conul primului cycle
 
-
-        //robot.glider.sliderState = Glider.SliderState.EXTEND;
+        robot.glider.sliderState = Glider.SliderState.LOW;
         robot.sleep(0.8);
-        robot.glider.sliderState = Glider.SliderState.IDLE;
 
         robot.drive.followTrajectory(trajectories.get(5));
-
-        robot.outtake.clawState = Outtake.ClawState.OPEN;
-        robot.sleep(1);
-
-
-        //robot.glider.sliderState = Glider.SliderState.RETRACT;
-        robot.sleep(0.75);
-        robot.glider.sliderState = Glider.SliderState.IDLE;
-
-
-        // park
         robot.drive.followTrajectory(trajectories.get(6));
 
+        robot.glider.triggerOn = true;
+        robot.glider.slide.setPower(robot.glider.RETRACT_POWER_SLOW);
+        robot.sleep(0.35);
+        robot.outtake.clawState = Outtake.ClawState.OPEN;
+        robot.sleep(1);
+        robot.glider.triggerOn = false;
+        robot.sleep(0.2);
+
+        robot.glider.sliderState = Glider.SliderState.IDLE;
+        robot.sleep(0.2);
+
+        // park
         robot.drive.followTrajectory(trajectories.get(7));
+        robot.drive.followTrajectory(trajectories.get(8));
         robot.sleep(10);
 
 

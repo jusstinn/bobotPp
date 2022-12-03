@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @Config
 public class Outtake implements Sub{
-    public static double CLOSED_POSITION = 0.5;
-    public static double OPEN_POSITION = 0.7;
+    public static double CLOSED_POSITION = 0.3;
+    public static double OPEN_POSITION = 0.45;
 
     public enum  ClawState {
         OPEN,

@@ -31,185 +31,86 @@ public class TrajectoryRed{
         return new TrajectoryBuilder(getTrajectorySequenceEndPos(trajectories), startHeading, BASE_VEL_CONSTRAINT, BASE_ACCEL_CONSTRAINT);
     }
 
-    public static List<Trajectory> getTrajectoriesMiddle() {
+    public static List<Trajectory> getTrajectories(int value) {
         List<Trajectory> trajectories = new ArrayList<>();
 
         // 0
         // se duce in colt + rotit
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(78, -64, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(72, -64, Math.toRadians(90)))
                 .build()
         );
 
         // 1
         // mere in fata la lasat de preload + rotit
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(64, -18.5, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(64, -16, Math.toRadians(180)))
                 .build()
         );
 
         // 2
         // um pic spate sa nu dea de bat
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(65, -17, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(70, -17, Math.toRadians(180)))
                 .build()
         );
 
         // 3
         // rotti 130 luat con
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(63, -15, Math.toRadians(35)))
+                .lineToLinearHeading(new Pose2d(65, -13, Math.toRadians(35)))
                 .build()
         );
 
         // 4
         // mers fata
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(35))
-                .lineToLinearHeading(new Pose2d(73, -12, Math.toRadians(35)))
+                .lineToLinearHeading(new Pose2d(73, -9, Math.toRadians(35)))
                 .build()
         );
 
         // 5
         // reintors la pus de bat
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(35))
-                .lineToLinearHeading(new Pose2d(63, -24, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(64, -24, Math.toRadians(180)))
+                .build()
+        );
+
+        // 6
+        // MERS FATA SA NU DEA PESTE CONU DE JOS
+        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
+                .lineToLinearHeading(new Pose2d(62, -18, Math.toRadians(180)))
                 .build()
         );
 
 
-        // 6?????????
+        // 7?????????
         // GO TO PARKING PARTK
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(65, -20, Math.toRadians(180)))
-                .build()
-        );
-
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(64, -20, Math.toRadians(180)))
-                .build()
-        );
-
-        return trajectories;
-    }
-
-    public static List<Trajectory> getTrajectoriesLeft() {
-        List<Trajectory> trajectories = new ArrayList<>();
-
-        // 0
-        // se duce in colt + rotit
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(78, -64, Math.toRadians(90)))
-                .build()
-        );
-
-        // 1
-        // mere in fata la lasat de preload + rotit
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(64, -18.5, Math.toRadians(180)))
-                .build()
-        );
-
-        // 2
-        // um pic spate sa nu dea de bat
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(65, -17, Math.toRadians(180)))
-                .build()
-        );
-
-        // 3
-        // rotti 130 luat con
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(63, -15, Math.toRadians(35)))
-                .build()
-        );
-
-        // 4
-        // mers fata
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(35))
-                .lineToLinearHeading(new Pose2d(67, -12, Math.toRadians(35)))
-                .build()
-        );
-
-        // 5
-        // reintors la pus de bat
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(35))
-                .lineToLinearHeading(new Pose2d(63, -24, Math.toRadians(180)))
-                .build()
-        );
-
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
                 .lineToLinearHeading(new Pose2d(67, -3, Math.toRadians(180)))
                 .build()
         );
 
-        // 6?????????
-        // GO TO PARKING PARTK
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(42, -3, Math.toRadians(180)))
-                .build()
-        );
-
-        return trajectories;
-    }
-
-    public static List<Trajectory> getTrajectoriesRight() {
-        List<Trajectory> trajectories = new ArrayList<>();
-
-        // 0
-        // se duce in colt + rotit
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(78, -64, Math.toRadians(90)))
-                .build()
-        );
-
-        // 1
-        // mere in fata la lasat de preload + rotit
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(64, -18.5, Math.toRadians(180)))
-                .build()
-        );
-
-        // 2
-        // um pic spate sa nu dea de bat
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(65, -17, Math.toRadians(180)))
-                .build()
-        );
-
-        // 3
-        // rotti 130 luat con
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(63, -15, Math.toRadians(35)))
-                .build()
-        );
-
-        // 4
-        // mers fata
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(35))
-                .lineToLinearHeading(new Pose2d(73, -12, Math.toRadians(35)))
-                .build()
-        );
-
-        // 5
-        // reintors la pus de bat
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(35))
-                .lineToLinearHeading(new Pose2d(63, -24, Math.toRadians(180)))
-                .build()
-        );
-
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(67, -3, Math.toRadians(180)))
-                .build()
-        );
-
-
-        // 6?????????
-        // GO TO PARKING PARTK
-        trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(25, -3, Math.toRadians(180)))
-                .build()
-        );
-
+        //8
+        if (value == 1 || value == -1) {
+            // Middle
+            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
+                    .lineToLinearHeading(new Pose2d(64, -3, Math.toRadians(180)))
+                    .build()
+            );
+        } else if (value == 2) {
+            //Left
+            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
+                    .lineToLinearHeading(new Pose2d(46, -3, Math.toRadians(180)))
+                    .build()
+            );
+        } else if (value == 3) {
+            // Right
+            trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
+                    .lineToLinearHeading(new Pose2d(15, -3, Math.toRadians(180)))
+                    .build()
+            );
+        }
         return trajectories;
     }
 }

@@ -36,9 +36,7 @@ public class Glider implements Sub{
     double pozLOW = 1700; // TODO
     double pozMIDDLE = 2950; // TODO
     double pozHIGH = 3900; // TODO
-    int currIndexStackedCones = 0;
-    public double[] stackConesList = new double[5];
-
+    double pozSTACKED = 475;
 
     public boolean triggerOn = false;
 
@@ -54,11 +52,6 @@ public class Glider implements Sub{
         //slide.setDirection(DcMotorSimple.Direction.REVERSE);
 
         sliderState = SliderState.IDLE;
-
-        stackConesList[0] = 250;
-        stackConesList[1] = 230;
-        stackConesList[2] = 210;
-        stackConesList[3] = 190;
     }
 
     public double getCurrentPosition(){
@@ -76,11 +69,7 @@ public class Glider implements Sub{
             case HIGH:
                 return pozHIGH;
             case STACKED_CONES:
-                if (currIndexStackedCones < 4) {
-                    return stackConesList[currIndexStackedCones++];
-                } else {
-                    return stackConesList[3];
-                }
+                return pozSTACKED;
         }
         return -1; // never happens
     }
