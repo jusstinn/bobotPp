@@ -99,9 +99,9 @@ public class TrajectoryRed{
 
         //8
         if (value == 1 || value == -1) {
-            // Middle
+            // Right
             trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                    .lineToLinearHeading(new Pose2d(64, -3, Math.toRadians(180)))
+                    .lineToLinearHeading(new Pose2d(15, -3, Math.toRadians(180)))
                     .build()
             );
         } else if (value == 2) {
@@ -111,9 +111,9 @@ public class TrajectoryRed{
                     .build()
             );
         } else if (value == 3) {
-            // Right
+            // Middle
             trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                    .lineToLinearHeading(new Pose2d(15, -3, Math.toRadians(180)))
+                    .lineToLinearHeading(new Pose2d(64, -3, Math.toRadians(180)))
                     .build()
             );
         }

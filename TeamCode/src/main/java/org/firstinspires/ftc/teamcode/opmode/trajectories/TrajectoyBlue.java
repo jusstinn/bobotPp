@@ -88,7 +88,7 @@ public class TrajectoyBlue {
         // 6
         // MERS FATA SA NU DEA PESTE CONU DE JOS
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(0))
-                .lineToLinearHeading(new Pose2d(-62, -16.5, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(-62.5, -17.5, Math.toRadians(0)))
                 .build()
         );
 
@@ -117,7 +117,7 @@ public class TrajectoyBlue {
 
         // 10
         trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(-22.5, 5.5, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-24.5, 5.5, Math.toRadians(90)))
                 .build()
         );
 
@@ -127,7 +127,7 @@ public class TrajectoyBlue {
         if (value == 1 || value == -1) {
             // Middle
             trajectories.add(makeTrajectoryBuilder(trajectories, Math.toRadians(90))
-                    .lineToLinearHeading(new Pose2d(-74, -3, Math.toRadians(0)))
+                    .lineToLinearHeading(new Pose2d(-77, -3, Math.toRadians(0)))
                     .build()
             );
         } else if (value == 2) {

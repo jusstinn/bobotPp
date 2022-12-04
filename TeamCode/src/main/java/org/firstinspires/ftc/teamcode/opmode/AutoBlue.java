@@ -237,7 +237,6 @@ public class AutoBlue extends LinearOpMode {
 
         // park
         robot.drive.followTrajectory(trajectories.get(11));
-        robot.sleep(10);
         robot.stop();
     }
 }
