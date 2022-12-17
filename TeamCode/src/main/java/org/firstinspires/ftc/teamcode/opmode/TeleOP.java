@@ -76,9 +76,10 @@ public class TeleOP extends OpMode {
             }
         }
 
-        telemetry.addData("mata", robot.outtake.clawServo.getPosition());
-        telemetry.addData("shess", robot.glider.slide.getCurrentPosition());
-        telemetry.addData("shess222", robot.glider.sliderState);
+        telemetry.addData("claw position ", robot.outtake.clawServo.getPosition());
+        telemetry.addData("shessh left pos ", robot.glider.slideLeft.getCurrentPosition());
+        telemetry.addData("shessh right pos ", robot.glider.slideRight.getCurrentPosition());
+        telemetry.addData("slider state ", robot.glider.sliderState);
         if (gamepad2.y) {
             if(gamepad2.dpad_right){
                 robot.glider.triggerOn = false;
@@ -99,13 +100,16 @@ public class TeleOP extends OpMode {
         }
 
         if(gamepad2.right_trigger > 0){
-            robot.glider.slide.setPower(robot.glider.EXTEND_POWER_FAST);
+            robot.glider.slideLeft.setPower(robot.glider.EXTEND_POWER_FAST);
+            robot.glider.slideRight.setPower(robot.glider.EXTEND_POWER_FAST);
             robot.glider.triggerOn = true;
         } else if(gamepad2.left_trigger > 0){
-            robot.glider.slide.setPower(robot.glider.RETRACT_POWER_FAST);
+            robot.glider.slideLeft.setPower(robot.glider.RETRACT_POWER_FAST);
+            robot.glider.slideRight.setPower(robot.glider.RETRACT_POWER_FAST);
             robot.glider.triggerOn = true;
         } else if (robot.glider.triggerOn) {
-            robot.glider.slide.setPower(robot.glider.IDLE_POWER);
+            robot.glider.slideLeft.setPower(robot.glider.IDLE_POWER);
+            robot.glider.slideRight.setPower(robot.glider.IDLE_POWER);
         }
         if(gamepad2.a){
             robot.outtake.clawState = Outtake.ClawState.CLOSED;

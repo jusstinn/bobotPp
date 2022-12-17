@@ -4,23 +4,27 @@ import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.AprilTagAutonomousInitDetectionExample;
+
+import org.openftc.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.teamcode.opmode.trajectories.TrajectoryRed;
 import org.firstinspires.ftc.teamcode.opmode.trajectories.TrajectoyBlue;
 import org.firstinspires.ftc.teamcode.subsytems.Glider;
 import org.firstinspires.ftc.teamcode.subsytems.Outtake;
 import org.firstinspires.ftc.teamcode.subsytems.Robot;
+
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.openftc.easyopencv.OpenCvInternalCamera;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Autonomous
-public class AutoBlue extends LinearOpMode {
-
+public class AutoRightDreapta extends LinearOpMode {
     Robot robot;
 
     @Override
@@ -28,7 +32,7 @@ public class AutoBlue extends LinearOpMode {
         robot = new Robot(this, true);
 
         robot.start();
-        robot.drive.setPoseEstimate(TrajectoyBlue.START_POSE);
+        robot.drive.setPoseEstimate(TrajectoryRed.START_POSE);
 
         int readFromCamera = -1;
 
@@ -156,15 +160,16 @@ public class AutoBlue extends LinearOpMode {
         // 1 middle
         // 2 left
         // 3 right
-        List<Trajectory> trajectories = TrajectoyBlue.getTrajectories(readFromCamera);
+        List<Trajectory> trajectories = TrajectoryRed.getTrajectories(readFromCamera);
         telemetry.addData("caemera vede", readFromCamera);
 
         robot.outtake.clawState = Outtake.ClawState.CLOSED;
-        robot.sleep(0.12);
+        robot.sleep(0.4);
+
+        robot.glider.sliderState = Glider.SliderState.LOW;
 
         // se duce in colt
         robot.drive.followTrajectory(trajectories.get(0));
-        robot.glider.sliderState = Glider.SliderState.LOW;
 
         // mere in fata la lasat de preload + rotit
         robot.drive.followTrajectory(trajectories.get(1));
@@ -172,12 +177,13 @@ public class AutoBlue extends LinearOpMode {
         robot.glider.triggerOn = true;
         robot.glider.slideLeft.setPower(robot.glider.RETRACT_POWER_SLOW);
         robot.glider.slideRight.setPower(robot.glider.RETRACT_POWER_SLOW);
-        robot.sleep(0.235);
+        robot.sleep(0.35);
 
 
         robot.outtake.clawState = Outtake.ClawState.OPEN;
-        robot.sleep(0.1);
+        robot.sleep(1);
         robot.glider.triggerOn = false;
+        robot.sleep(0.2);
 
         // dat in spate
         robot.drive.followTrajectory(trajectories.get(2));
@@ -185,16 +191,18 @@ public class AutoBlue extends LinearOpMode {
 
         // rotit la conuri
         robot.drive.followTrajectory(trajectories.get(3));
+        robot.sleep(0.2);
 
         // shusta persshuta mers i nfata
         robot.drive.followTrajectory(trajectories.get(4));
 
         robot.outtake.clawState = Outtake.ClawState.CLOSED;
-        robot.sleep(0.1);
+        robot.sleep(0.75);
 
         // a prins conul primului cycle
 
         robot.glider.sliderState = Glider.SliderState.LOW;
+        robot.sleep(0.8);
 
         robot.drive.followTrajectory(trajectories.get(5));
         robot.drive.followTrajectory(trajectories.get(6));
@@ -202,44 +210,19 @@ public class AutoBlue extends LinearOpMode {
         robot.glider.triggerOn = true;
         robot.glider.slideLeft.setPower(robot.glider.RETRACT_POWER_SLOW);
         robot.glider.slideRight.setPower(robot.glider.RETRACT_POWER_SLOW);
-        robot.sleep(0.1);
+        robot.sleep(0.35);
         robot.outtake.clawState = Outtake.ClawState.OPEN;
-        robot.glider.triggerOn = false;
-
-        robot.glider.sliderState = Glider.SliderState.IDLE;
-
-        // AUTO BUN STOP
-        // TODO
-        robot.drive.followTrajectory(trajectories.get(7));
-
-        robot.drive.followTrajectory(trajectories.get(8));
-
-        robot.glider.sliderState = Glider.SliderState.STACKED_CONES2;
-        robot.outtake.clawState = Outtake.ClawState.OPEN;
-        robot.drive.followTrajectory(trajectories.get(9));
-
-        robot.outtake.clawState = Outtake.ClawState.CLOSED;
-        robot.sleep(0.15);
-        robot.glider.sliderState = Glider.SliderState.HIGH;
-        robot.drive.followTrajectory(trajectories.get(10));
-
-        robot.glider.triggerOn = true;
-        robot.glider.slideLeft.setPower(Glider.RETRACT_POWER_FAST);
-        robot.glider.slideRight.setPower(Glider.RETRACT_POWER_FAST);
-        robot.sleep(0.2);
-
-        telemetry.addData("grr", "nu zic");
-        robot.outtake.clawState = Outtake.ClawState.OPEN;
-
-        robot.glider.slideLeft.setPower(Glider.EXTEND_POWER_FAST);
-        robot.glider.slideRight.setPower(Glider.EXTEND_POWER_FAST);
+        robot.sleep(1);
         robot.glider.triggerOn = false;
         robot.sleep(0.2);
 
         robot.glider.sliderState = Glider.SliderState.IDLE;
+        robot.sleep(0.2);
 
         // park
-        robot.drive.followTrajectory(trajectories.get(11));
+        robot.drive.followTrajectory(trajectories.get(7));
+        robot.drive.followTrajectory(trajectories.get(8));
+        robot.sleep(10);
         robot.stop();
     }
 }

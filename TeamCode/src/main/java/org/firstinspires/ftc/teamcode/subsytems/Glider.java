@@ -42,22 +42,28 @@ public class Glider implements Sub{
 
     public boolean triggerOn = false;
 
-    public DcMotor slide;
+    public DcMotor slideLeft;
+
+    public DcMotor slideRight;
 
     public SliderState sliderState;
 
+
     public Glider(HardwareMap hardwareMap, Robot robot){
-        slide = hardwareMap.get(DcMotor.class, "slideMotor");
+        slideLeft = hardwareMap.get(DcMotor.class, "slideMotorLeft");
+        slideRight = hardwareMap.get(DcMotor.class, "slideMotorRight");
 
-        slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        slideLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        slideRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        //slide.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        slideRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
         sliderState = SliderState.IDLE;
     }
 
     public double getCurrentPosition(){
-        return slide.getCurrentPosition();
+        return slideLeft.getCurrentPosition();
     }
 
     public double getTargetHeight() {
@@ -82,30 +88,38 @@ public class Glider implements Sub{
     public void update(){
         if (triggerOn) return;
 
-        double currPoz = slide.getCurrentPosition();
+        double currPoz = slideLeft.getCurrentPosition();
         double targetPoz = getTargetHeight();
         if (currPoz < targetPoz) {
             double diff = targetPoz - currPoz;
             if (diff >= thresholdFast) {
-                slide.setPower(EXTEND_POWER_FAST);
+                slideLeft.setPower(EXTEND_POWER_FAST);
+                slideRight.setPower(EXTEND_POWER_FAST);
             } else if (diff >= thresholdNormal) {
-                slide.setPower(EXTEND_POWER_NORMAL);
+                slideLeft.setPower(EXTEND_POWER_NORMAL);
+                slideRight.setPower(EXTEND_POWER_NORMAL);
             } else if (diff >= thresholdSlow) {
-                slide.setPower(EXTEND_POWER_SLOW);
-            } else if (diff <= thresholdIdle) {
-                slide.setPower(IDLE_POWER);
+                slideLeft.setPower(EXTEND_POWER_SLOW);
+                slideRight.setPower(EXTEND_POWER_SLOW);
+            }else if (diff <= thresholdIdle) {
+                slideLeft.setPower(IDLE_POWER);
+                slideRight.setPower(IDLE_POWER);
             }
         }
         if (currPoz > targetPoz) {
             double diff = currPoz - targetPoz;
             if (diff >= thresholdFast) {
-                slide.setPower(RETRACT_POWER_FAST);
+                slideLeft.setPower(RETRACT_POWER_FAST);
+                slideRight.setPower(RETRACT_POWER_FAST);
             } else if (diff >= thresholdNormal) {
-                slide.setPower(RETRACT_POWER_NORMAL);
+                slideLeft.setPower(RETRACT_POWER_NORMAL);
+                slideRight.setPower(RETRACT_POWER_NORMAL);
             } else if (diff >= thresholdSlow) {
-                slide.setPower(RETRACT_POWER_SLOW);
+                slideLeft.setPower(RETRACT_POWER_SLOW);
+                slideRight.setPower(RETRACT_POWER_SLOW);
             } else if (diff <= thresholdIdle) {
-                slide.setPower(IDLE_POWER);
+                slideLeft.setPower(IDLE_POWER);
+                slideRight.setPower(IDLE_POWER);
             }
         }
     }

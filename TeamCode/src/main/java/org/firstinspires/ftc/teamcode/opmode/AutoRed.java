@@ -176,7 +176,8 @@ public class AutoRed extends LinearOpMode {
         robot.drive.followTrajectory(trajectories.get(1));
 
         robot.glider.triggerOn = true;
-        robot.glider.slide.setPower(robot.glider.RETRACT_POWER_SLOW);
+        robot.glider.slideLeft.setPower(robot.glider.RETRACT_POWER_SLOW);
+        robot.glider.slideRight.setPower(robot.glider.RETRACT_POWER_SLOW);
         robot.sleep(0.35);
 
 
@@ -208,7 +209,8 @@ public class AutoRed extends LinearOpMode {
         robot.drive.followTrajectory(trajectories.get(6));
 
         robot.glider.triggerOn = true;
-        robot.glider.slide.setPower(robot.glider.RETRACT_POWER_SLOW);
+        robot.glider.slideLeft.setPower(robot.glider.RETRACT_POWER_SLOW);
+        robot.glider.slideRight.setPower(robot.glider.RETRACT_POWER_SLOW);
         robot.sleep(0.35);
         robot.outtake.clawState = Outtake.ClawState.OPEN;
         robot.sleep(1);

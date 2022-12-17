@@ -178,6 +178,7 @@ public class DriveTrain extends MecanumDrive implements Sub {
         cstravetii murati lu vociu
          */
         // TODO: reverse any motors using DcMotor.setDirection()
+        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
         rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
 
